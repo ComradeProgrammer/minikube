@@ -1,0 +1,9 @@
+/out
+
+largeFile
+smallFile
+
+minikube
+kind
+
+*.tar

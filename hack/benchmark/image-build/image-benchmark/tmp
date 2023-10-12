@@ -1,0 +1,1 @@
+./out/benchmark --runs=2 --images=buildpacksFewLargeFiles --iters="iterative" --bench-methods="image load docker,image build docker,docker-env docker,registry docker,image load containerd,image build containerd,registry containerd"

@@ -1,9 +1,9 @@
 name: "publish image benchmark"
 on:
   workflow_dispatch:
-  schedule:
-    # every day at 7am & 7pm pacific
-    - cron: "0 2,14 * * *"
+  push:
+    branches:
+      - test
 env:
   GOPROXY: https://proxy.golang.org
   GO_VERSION: '1.21.1'
@@ -12,7 +12,6 @@ permissions:
 
 jobs:
   image-benchmark:
-    if: github.repository == 'kubernetes/minikube'
     runs-on: ubuntu-20.04
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}

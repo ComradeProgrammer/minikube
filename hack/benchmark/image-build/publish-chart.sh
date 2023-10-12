@@ -24,14 +24,13 @@ install_minikube() {
 }
 
 run_benchmark() {
-        ( cd ./hack/benchmark/image-build/minikube-image-benchmark &&
-                git submodule update --init &&
+        ( cd ./hack/benchmark/image-build/image-benchmark &&
                 make                        &&
-                ./out/benchmark --runs=4 --memory="1800m" --images="buildpacksFewLargeFiles" --iters="iterative" --bench-methods="image load docker,image build docker,docker-env docker,registry docker,image load containerd,image build containerd,registry containerd")
+                ./out/benchmark --runs=2 --memory="1800m" --images="buildpacksFewLargeFiles" --iters="iterative" --bench-methods="image load docker,image build docker,docker-env docker,registry docker,image load containerd,image build containerd,registry containerd")
 }
 
 generate_chart() {
-        go run ./hack/benchmark/image-build/generate-chart.go --csv hack/benchmark/image-build/minikube-image-benchmark/out/results.csv  --past-runs record.json
+        go run ./hack/benchmark/image-build/generate-chart.go --csv hack/benchmark/image-build/image-benchmark/out/results.csv  --past-runs record.json
 }
 
 copy() {
@@ -55,4 +54,4 @@ generate_chart
 copy ./record.json "$BUCKET/record.json"
 copy ./Iterative_buildpacksFewLargeFiles_containerd_chart.png "$BUCKET/Iterative_buildpacksFewLargeFiles_containerd_chart.png"
 copy ./Iterative_buildpacksFewLargeFiles_docker_chart.png "$BUCKET/Iterative_buildpacksFewLargeFiles_docker_chart.png"
-cleanup
+#cleanup

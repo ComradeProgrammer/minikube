@@ -269,7 +269,7 @@ func createChart(record Records, itr string, imageName string, runtime string, c
 				}
 				pointGroup[method] = append(pointGroup[method], point)
 
-				yMaxTotal = math.Max(yMaxTotal, pointGroup[method][i].Y)
+				yMaxTotal = math.Max(yMaxTotal, point.Y)
 			}
 		}
 	}
