@@ -6,7 +6,6 @@
 
 name: virtual-box-functional-test-rerun
 
-
 on:
   workflow_run:
     workflows: ["PR"]
